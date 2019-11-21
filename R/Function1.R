@@ -9,7 +9,8 @@
 #' @export query_genbank2
 
 
-query_genbank2 <- function(target, gene, return_max){
+seq_req <- function(target, gene, return_max){
+  library(rentrez)
   x <- gene
   y <- return_max
   search_returns = c()
