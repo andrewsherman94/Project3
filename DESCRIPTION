@@ -1,0 +1,20 @@
+Package: ansGreatImagesSometimes
+Type: Package
+Title: queries genbank for sequences; and maps coords to a map of louisiana
+Version: 1.0.0
+Authors@R: person("Andrew", "Sherman", role = c("aut", "cre"), email = "andrew.sherman-2@selu.edu")
+Description: An R package to pull queries genbank for sequences based on names and gene; and maps decimal degree coords to a map of louisiana
+License: MIT
+Imports: 
+  rentrez,
+  tidyverse,
+  sp,
+  rgdal,
+  dplyr
+Suggests:
+  knitr,
+  rmarkdown
+Encoding: UTF-8
+LazyData: TRUE
+VignetteBuilder: knitr
+RoxygenNote: 7.0.0

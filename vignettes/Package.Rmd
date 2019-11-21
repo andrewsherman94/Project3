@@ -1,0 +1,49 @@
+---
+title: "PackageInstructions"
+output: html_document
+---
+
+## For query_genbank2()
+## Function to query sequences from genbank
+## Requires 3 arguments :
+## 1. target -- the search term for genbank -- can be species, genus, family, etc.
+## 2. gene -- the gene you'd like to search for -- such as cytb, COI, RAG1, etc.
+## 3. return_max -- the number of reads to return 
+
+## Requires the packages rentrez 
+
+
+```{r}
+library(rentrez)
+query_genbank2(target = "Characodon", gene = "cytb", return_max = 15)
+```
+## Note that the target and gene need to be in quotes, return_max does not.
+## The output .fasta can be used in tree construction
+
+--------------------------------------------------------
+## For plot_points()
+## Function to plot  GPS coordinates in a .csv file to a map of Louisiana -- for rivers.
+## Requires a read-in .csv file saved as an object in decimal degrees (not DMS)
+## -- example: rivers_la.csv in "/cloud/project/"
+
+## Requires the packages sp, rgdal, tidyverse, dplyr
+
+```{r}
+library(tidyverse)
+rivers <- read_csv("/cloud/project/rivers_la.csv")
+```
+
+## Function requires two arguments:
+## 1. coords -- the name of the read-in .csv file object
+## 2. site_name -- the name of the column in your .csv that contains site/river names
+
+## example:
+```{r}
+library(sp)
+library(rgdal)
+library(tidyverse)
+library(dplyr)
+plot_points(coords = rivers, site_name = "Site")
+```
+## Note that site_name needs to be in quotes, but the coords object does not.
+

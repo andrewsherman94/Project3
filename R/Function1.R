@@ -1,3 +1,14 @@
+#' Queries data from genbank
+#' 
+#' Pulls data from genbank and complies in into a .fasta file for further anaylsis
+#' 
+#' @param target the taxa sequences are wanted for (can be species, genera, family level, etc)
+#' @param gene the gene of interest -- such as CytB, ND2, COI, RAG2
+#' @param return_max the number of sequences to return
+#' @return a list of sequences
+#' @export query_genbank2
+
+
 query_genbank2 <- function(target, gene, return_max){
   x <- gene
   y <- return_max
@@ -6,10 +17,8 @@ query_genbank2 <- function(target, gene, return_max){
   search_returns <- c(entrez_search(db = "Nucleotide", term = query, retmax = y, api_key= "343978704c7afa7b38e2ad42e30294804308"))
   z <- search_returns$id
   sequence <- entrez_fetch(db = "nuccore", id = z, rettype = "fasta", retmax = y)
-  cat(sequence, file = "genbank_out.txt", append = TRUE)
-  View(sequence)
+  cat(sequence, file = "genbank_out.fasta", append = TRUE)
   return(sequence)
 }
 
 
-## Remove View() later
